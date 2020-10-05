@@ -28,4 +28,26 @@ interface HandlerInterface
      */
     public function __construct(string $token);
 
+    /**
+     * Method for register a participant to a webinar.
+     * 
+     * @param string $event_session_ID
+     * Webinar ID.
+     * @param array $params
+     * If $params['email'] is not set or have an incorrect value, the method will return false.
+     * @return array|string|bool
+     */
+    public function registerWebinarParticipant(string $event_session_ID, array $params);
+
+    /**
+     * Method for register a participant to an event.
+     * 
+     * @param string $event_ID
+     * Webinar ID.
+     * @param array $params
+     * If $params['email'] is not set or have an incorrect value, the method will return false.
+     * @return array|string|bool
+     */
+    public function registerEventParticipant(string $event_ID, array $params);
+
 }

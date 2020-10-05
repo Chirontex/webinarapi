@@ -44,4 +44,18 @@ class Handler implements HandlerInterface
 
     }
 
+    public function registerEventParticipant(string $event_ID, array $params)
+    {
+
+        if (isset($params['email'])) {
+
+            if (filter_var($params['email'], FILTER_VALIDATE_EMAIL)) $result = Sender::post('https://userapi.webinar.ru/v3/events/'.$event_ID.'/register', $this->token, $params);
+            else $result = false;
+
+        } else $result = false;
+
+        return $result;
+
+    }
+
 }
