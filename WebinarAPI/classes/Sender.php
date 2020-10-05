@@ -52,8 +52,7 @@ class Sender implements SenderInterface
 
         foreach ($params as $key => $value) {
             
-            if ($req === $url) $req .= '?';
-            else $req .= '&';
+            $req .= $req === $url ? '?' : '&';
 
             $req .= urlencode($key).'='.urlencode($value);
 
