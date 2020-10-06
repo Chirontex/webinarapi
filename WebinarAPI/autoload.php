@@ -1,6 +1,6 @@
 <?php
 /**
- *    WebinarAPI Handler 0.1
+ *    WebinarAPI Handler 0.2
  *    Copyright (C) 2020  Dmitry Shumilin (dr.noisier@yandex.ru)
  *
  *    This program is free software: you can redistribute it and/or modify

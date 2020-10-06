@@ -58,10 +58,24 @@ class Handler implements HandlerInterface
 
     }
 
-    public function getWebinarsInfo(array $params = [])
+    public function getAllEventsInfo(array $params = [])
     {
 
         return Sender::get('https://userapi.webinar.ru/v3/organization/events/schedule', $this->token, $params);
+
+    }
+
+    public function getEventInfo(string $event_ID)
+    {
+
+        return Sender::get('https://userapi.webinar.ru/v3/organization/events/'.$event_ID, $this->token, []);
+
+    }
+
+    public function getWebinarInfo(string $event_session_ID)
+    {
+
+        return Sender::get('https://userapi.webinar.ru/v3/eventsessions/'.$event_session_ID, $this->token, []);
 
     }
 

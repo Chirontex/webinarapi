@@ -51,11 +51,27 @@ interface HandlerInterface
     public function registerEventParticipant(string $event_ID, array $params);
 
     /**
-     * Receives an information about webinars.
+     * Receives an information about events.
      * 
      * @param array $params
-     * @return array|string|bool
+     * @return array|string
      */
-    public function getWebinarsInfo(array $params = []);
+    public function getAllEventsInfo(array $params = []);
+
+    /**
+     * Receives an info about an event.
+     * 
+     * @param string $event_ID
+     * @return array|string
+     */
+    public function getEventInfo(string $event_ID);
+
+    /**
+     * Receives an info about a webinar.
+     * 
+     * @param string $event_session_ID
+     * @return array|string
+     */
+    public function getWebinarInfo(string $event_session_ID);
 
 }
