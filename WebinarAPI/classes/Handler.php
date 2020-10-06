@@ -79,4 +79,42 @@ class Handler implements HandlerInterface
 
     }
 
+    public function getTestInfo(string $test_ID, array $params = [])
+    {
+
+        return Sender::get('https://userapi.webinar.ru/v3/tests/'.$test_ID, $this->token, $params);
+
+    }
+
+    public function getTestResults(string $test_ID, array $params = [])
+    {
+
+        return Sender::get('https://userapi.webinar.ru/v3/tests/'.$test_ID.'/results', $this->token, $params);
+
+    }
+
+    public function getTestCustomAnswers(string $test_ID, array $params = [])
+    {
+
+        return Sender::get('https://userapi.webinar.ru/v3/tests/'.$test_ID.'/customanswers', $this->token, $params);
+
+    }
+
+    public function answerTest(string $test_session_ID, array $params)
+    {
+
+        if (isset($params['userData']) && isset($params['answers'])) {
+
+            if (filter_var($params['userData']['email'], FILTER_VALIDATE_EMAIL) &&
+                isset($params['answers']['questionId']) &&
+                isset($params['answers']['answersId']) &&
+                isset($params['answers']['customAnswer'])) $result = Sender::post('https://userapi.webinar.ru/v3/testsessions/'.$test_session_ID.'/answers', $this->token, $params);
+            else $result = false;
+
+        } else $result = false;
+
+        return $result;
+
+    }
+
 }
