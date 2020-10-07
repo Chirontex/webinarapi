@@ -140,4 +140,15 @@ interface HandlerInterface
      */
     public function getWebinarQuestions(string $event_session_ID, array $params = []);
 
+    /**
+     * Sends question or answer. See the docs: https://help.webinar.ru/ru/articles/3154823
+     * 
+     * @param string $event_session_ID
+     * @param $text
+     * Text will be converted to string type.
+     * @param array $params
+     * @return array|string
+     */
+    public function sendQuestionAnswer(string $event_session_ID, $text, array $params = []);
+
 }

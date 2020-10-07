@@ -138,4 +138,13 @@ class Handler implements HandlerInterface
 
     }
 
+    public function sendQuestionAnswer(string $event_session_ID, $text, array $params = [])
+    {
+
+        $params['text'] = (string)$text;
+
+        return Sender::post('https://userapi.webinar.ru/v3/eventsessions/'.$event_session_ID.'/questions', $this->token, $params);
+
+    }
+
 }
