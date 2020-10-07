@@ -32,23 +32,23 @@ interface HandlerInterface
      * Method for register a participant to a webinar. See the docs: https://help.webinar.ru/ru/articles/3149210
      * 
      * @param string $event_session_ID
-     * Webinar ID.
+     * @param string $email
+     * If email is incorrect, the method will return false.
      * @param array $params
-     * If $params['email'] is not set or have an incorrect value, the method will return false.
      * @return array|string|bool
      */
-    public function registerWebinarParticipant(string $event_session_ID, array $params);
+    public function registerWebinarParticipant(string $event_session_ID, string $email, array $params = []);
 
     /**
      * Method for register a participant to an event. See the docs: https://help.webinar.ru/ru/articles/3149396
      * 
      * @param string $event_ID
-     * Webinar ID.
+     * @param string $email
+     * If email is incorrect, the method will return false.
      * @param array $params
-     * If $params['email'] is not set or have an incorrect value, the method will return false.
      * @return array|string|bool
      */
-    public function registerEventParticipant(string $event_ID, array $params);
+    public function registerEventParticipant(string $event_ID, string $email, array $params = []);
 
     /**
      * Receives an information about events. See the docs: https://help.webinar.ru/ru/articles/3148981
@@ -110,5 +110,34 @@ interface HandlerInterface
      * @return array|string|bool
      */
     public function answerTest(string $test_session_ID, array $params);
+
+    /**
+     * Receives chat messages. See the docs: https://help.webinar.ru/ru/articles/3154793
+     * 
+     * @param string $event_session_ID
+     * @param array $params
+     * @return array|string
+     */
+    public function getChatMessages(string $event_session_ID, array $params = []);
+
+    /**
+     * Sends message to the chat. See the docs: https://help.webinar.ru/ru/articles/3154801
+     * 
+     * @param string $event_session_ID
+     * @param $text
+     * Text will be converted to string type.
+     * @param array $params
+     * @return array|string
+     */
+    public function sendChatMessage(string $event_session_ID, $text, array $params = []);
+
+    /**
+     * Receives webinar questions. See the docs: https://help.webinar.ru/ru/articles/3154818
+     * 
+     * @param string $event_session_ID
+     * @param array $params
+     * @return array|string
+     */
+    public function getWebinarQuestions(string $event_session_ID, array $params = []);
 
 }

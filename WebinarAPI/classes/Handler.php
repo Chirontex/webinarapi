@@ -30,31 +30,29 @@ class Handler implements HandlerInterface
 
     }
 
-    public function registerWebinarParticipant(string $event_session_ID, array $params)
+    public function registerWebinarParticipant(string $event_session_ID, string $email, array $params = [])
     {
 
-        if (isset($params['email'])) {
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
-            if (filter_var($params['email'], FILTER_VALIDATE_EMAIL)) $result = Sender::post('https://userapi.webinar.ru/v3/eventsessions/'.$event_session_ID.'/register', $this->token, $params);
-            else $result = false;
+            $params['email'] = $email;
 
-        } else $result = false;
+            return Sender::post('https://userapi.webinar.ru/v3/eventsessions/'.$event_session_ID.'/register', $this->token, $params);
 
-        return $result;
+        } else return false;
 
     }
 
-    public function registerEventParticipant(string $event_ID, array $params)
+    public function registerEventParticipant(string $event_ID, string $email, array $params = [])
     {
 
-        if (isset($params['email'])) {
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
-            if (filter_var($params['email'], FILTER_VALIDATE_EMAIL)) $result = Sender::post('https://userapi.webinar.ru/v3/events/'.$event_ID.'/register', $this->token, $params);
-            else $result = false;
+            $params['email'] = $email;
 
-        } else $result = false;
+            return Sender::post('https://userapi.webinar.ru/v3/events/'.$event_ID.'/register', $this->token, $params);
 
-        return $result;
+        } else return false;
 
     }
 
@@ -114,6 +112,29 @@ class Handler implements HandlerInterface
         } else $result = false;
 
         return $result;
+
+    }
+
+    public function getChatMessages(string $event_session_ID, array $params = [])
+    {
+
+        return Sender::get('https://userapi.webinar.ru/v3/eventsessions/'.$event_session_ID.'/chat', $this->token, $params);
+
+    }
+
+    public function sendChatMessage(string $event_session_ID, $text, array $params = [])
+    {
+
+        $params['text'] = (string)$text;
+
+        return Sender::post('https://userapi.webinar.ru/v3/eventsessions/'.$event_session_ID.'/chat', $this->token, $params);
+
+    }
+
+    public function getWebinarQuestions(string $event_session_ID, array $params = [])
+    {
+
+        return Sender::get('https://userapi.webinar.ru/v3/eventsessions/'.$event_session_ID.'/questions', $this->token, $params);
 
     }
 
