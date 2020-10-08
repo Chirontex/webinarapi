@@ -24,7 +24,15 @@ class Sender implements SenderInterface
     public static function post(string $url, string $token, array $params)
     {
 
-        $data = json_encode($params);
+        $data = '';
+
+        foreach ($params as $key => $value) {
+            
+            $data .= $data === '' ? '' : '&';
+
+            $data .= urlencode($key).'='.urlencode($value);
+
+        }
 
         $ch = curl_init($url);
 
