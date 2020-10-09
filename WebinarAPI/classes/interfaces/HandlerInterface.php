@@ -151,4 +151,28 @@ interface HandlerInterface
      */
     public function sendQuestionAnswer(string $event_session_ID, $text, array $params = []);
 
+    /**
+     * Gets webinars statistics in period. See the docs: https://help.webinar.ru/ru/articles/3149503
+     * 
+     * @param array $params
+     * @return array|string
+     */
+    public function getWebinarsStat(array $params = []);
+
+    /**
+     * Gets participants statistics in period. See the docs: https://help.webinar.ru/ru/articles/3149510
+     * 
+     * @param array $params
+     * @return array|string
+     */
+    public function getParticipantsStat(array $params = []);
+    
+    /**
+     * Gets participants visits stats in period. See the docs: https://help.webinar.ru/ru/articles/3149516
+     * 
+     * @param array $params
+     * @return array|string
+     */
+    public function getVisitsStat(array $params = []);
+
 }

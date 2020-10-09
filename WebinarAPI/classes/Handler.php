@@ -147,4 +147,25 @@ class Handler implements HandlerInterface
 
     }
 
+    public function getWebinarsStat(array $params = [])
+    {
+
+        return Sender::get('https://userapi.webinar.ru/v3/stats/events', $this->token, $params);
+
+    }
+
+    public function getParticipantsStat(array $params = [])
+    {
+
+        return Sender::get('https://userapi.webinar.ru/v3/stats/users', $this->token, $params);
+
+    }
+
+    public function getVisitsStat(array $params = [])
+    {
+
+        return Sender::get('https://userapi.webinar.ru/v3/stats/users/visits', $this->token, $params);
+
+    }
+
 }
