@@ -168,4 +168,11 @@ class Handler implements HandlerInterface
 
     }
 
+    public function getWebinarParticipants(string $event_session_ID, array $params = [])
+    {
+
+        return Sender::get('https://userapi.webinar.ru/v3/eventsessions/'.$event_session_ID.'/participations', $this->token, $params);
+
+    }
+
 }

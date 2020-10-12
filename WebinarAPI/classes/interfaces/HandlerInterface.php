@@ -175,4 +175,9 @@ interface HandlerInterface
      */
     public function getVisitsStat(array $params = []);
 
+    /**
+     * Gets the list of webinar participants. See the docs: https://help.webinar.ru/ru/articles/3149487
+     */
+    public function getWebinarParticipants(string $event_session_ID, array $params = []);
+
 }
