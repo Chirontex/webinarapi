@@ -84,7 +84,7 @@ interface HandlerInterface
     public function getTestInfo(string $test_ID, array $params = []);
 
     /**
-     * Receives test results. See the docs: https://help.webinar.ru/ru/articles/3185593-%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B8%D1%82%D1%8C-%D1%80%D0%B5%D0%B7%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%82%D1%8B-%D1%82%D0%B5%D1%81%D1%82%D0%B0
+     * Receives test results. See the docs: https://help.webinar.ru/ru/articles/3185593
      * 
      * @param string $test_ID
      * @param array $params
@@ -93,7 +93,7 @@ interface HandlerInterface
     public function getTestResults(string $test_ID, array $params = []);
 
     /**
-     * Receives test custom answers. See the docs: https://help.webinar.ru/ru/articles/3185593
+     * Receives test custom answers. See the docs: https://help.webinar.ru/ru/articles/3185522
      * 
      * @param string $test_ID
      * @param array $params
